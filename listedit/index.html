@@ -1,0 +1,36 @@
+<script src='js/jquery-1.4.4.min.js' type='text/javascript' charset='utf-8'></script>
+<script src='js/jquery-ui-1.8.8.custom.min.js' type='text/javascript' charset='utf-8'></script>
+<script src='js/underscore.js' type='text/javascript' charset='utf-8'></script>
+<script src='js/backbone.js' type='text/javascript' charset='utf-8'></script>
+<script src='js/json2.min.js' type='text/javascript' charset='utf-8'></script>
+<script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' type='text/javascript' charset='utf-8'></script>
+<script src='js/app.js' type='text/javascript' charset='utf-8'></script>
+
+<link type="text/css" href="css/cupertino/jquery-ui-1.8.8.custom.css" rel="Stylesheet" />
+<style>
+.demo { margin: 2em; }
+ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
+li { margin: 5px; padding: 5px; width: 150px; }
+#debug{ width:30em; height:10em;}
+</style>
+<script>
+$(function() {
+    App = new listedit.App();
+    
+    App.view.bind('sortupdate', function(e,o){
+       $('textarea').text(JSON.stringify(App.collection.map(function(i){ return i.get('id'); }))); 
+    });
+    
+    App.refresh( [{ id:'item001', name:'Item 1' },
+        { id:'item002', name:'Item 2' },
+        { id:'item003', name:'Item 3' },
+        { id:'item004', name:'Item 4' },
+        { id:'item005', name:'Item 5' }]);
+    
+});
+</script>
+
+<ul id='mylist' class='list_container' >
+</ul>
+
+<textarea id='debug' />
